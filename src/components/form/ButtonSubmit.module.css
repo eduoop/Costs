@@ -1,0 +1,20 @@
+.btnSubmit {
+    padding: .7em;
+    border-radius: 0;
+    outline: none;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-size: 1.1em;
+    cursor: pointer;
+    background-color: #222222;
+    font-weight: 500;
+    color: white;
+    transition: .2s;
+    border-radius: 5px;
+    border: 2px solid rgba(20, 20, 20, 0.815);
+}
+
+.btnSubmit:hover {
+    background-color: rgb(228, 226, 226);
+    color: #222222;
+}
