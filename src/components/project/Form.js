@@ -1,26 +1,26 @@
+import { useState, useEffect } from 'react'
 import ButtonSubmit from '../form/ButtonSubmit'
 import Input from '../form/Input'
 import Select from '../form/Select'
 import styles from './Form.module.css'
-import { useEffect, useState } from 'react'
 
 function Form ({ btnText }) {
 
     const [categories, setCategories] = useState([])
 
-    useEffect(() => {
-        fetch('http://127.0.0.1:3333/categories', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-          .then((resp) => resp.json())
-          .then((data) => {
-            setCategories(data)
-          })
-          .catch(err => console.log(err))
-      }, [])
+   useEffect(() => {
+       fetch("http://127.0.0.1:3333/categories", {
+           method: "GET",
+           headers: {
+               'Content-Type': 'application/json'
+           }
+       }).then((res) => res.json())
+       .then((data) => {
+           setCategories(data)
+       })
+       .catch(err => console.log(err))
+   })
+    
 
     return (
         <form className={styles.form}>

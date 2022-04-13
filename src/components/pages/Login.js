@@ -1,20 +1,24 @@
 import styles from './Login.module.css'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { AuthContext } from '../contexts/Auth'
 
 const Login = () => {
+
+    const { authenticated, login } = useContext(AuthContext)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     const hendleSubmit= (e) => {
         e.preventDefault();
-        console.log("submit", {email}, {password})
+        login(email, password)
     }
 
     return (
         <>
           <div className={styles.login}>
               <h1 className={styles.title}>Bem vindo de volta</h1>
+              <p>{String(authenticated)}</p>
               <form className={styles.form} onSubmit={hendleSubmit}>
                   <div className={styles.field}>
                       <label for="email">Email</label>
