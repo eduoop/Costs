@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { getProjects } from "../../services/api"
+import { AuthContext } from "../contexts/Auth"
 
 function Projects() {
 
 
   const [project, setProject] = useState([])
   const [loading, setLoading] = useState(true)
+
+  const { authenticated } = useContext(AuthContext)
 
   useEffect(() => {
     (async () => {

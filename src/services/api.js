@@ -8,6 +8,12 @@ export const createSession = async (email, password) => {
     return api.post('/auth', { email, password })
 }
 
+
 export const getProjects = async () => {
-    return api.get('/projects')
+const token = localStorage.getItem('token')
+    return api.get('/projects', {
+        headers: {
+            'authorization': `bearer ${token}`
+        }
+    })
 }

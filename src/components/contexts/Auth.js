@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react"
-import { api, createSession, getProjects} from '../../services/api'
+import { api, createSession } from '../../services/api'
 import { useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext()
@@ -11,8 +11,6 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
 
     const [loading, setLoading] = useState(true)
-
-    const [ projects, setProjects ] = useState([])
 
     useEffect(() => {
         const recorvedUser = localStorage.getItem('user')
