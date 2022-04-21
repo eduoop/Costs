@@ -24,10 +24,10 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
       const response = await createSession(email, password)
-      console.log('logou', response.data)
 
       const loggedUser = response.data.user.email 
       const token = response.data.token.token
+
 
       localStorage.setItem('user', JSON.stringify(loggedUser))
       localStorage.setItem('token', token)
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     }
   
     const logout = () => {
-      console.log('logout')
+    //   console.log('logout')
       localStorage.removeItem('user')
       
       localStorage.removeItem('token')

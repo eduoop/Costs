@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { useContext } from 'react'
 import Contact from '../src/components/pages/Contact';
@@ -10,6 +11,8 @@ import Navbar from '../src/components/layouts/Navbar';
 import Footer from '../src/components/layouts/Footer';
 import Projects from '../src/components/pages/Projects';
 import Login from './components/pages/Login';
+import Cadastro_email from './components/pages/Cadastro_email';
+import Cadastro_form from './components/pages/Cadastro_form';
 
 import { AuthProvider, AuthContext } from "./components/contexts/Auth"
 
@@ -29,6 +32,20 @@ function App() {
     return children
   }
 
+  const Logged = ({ children }) => {
+    const { authenticated, loading } = useContext(AuthContext)
+
+    if(loading) {
+      return <div className='loading'>Carregando...</div>
+    }
+
+    if(authenticated) {
+      return <Navigate to="/"/>
+    }
+
+    return children
+  }
+
   return (
     <>
       <Router>
@@ -38,10 +55,12 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/contact" element={<Contact />}></Route>
-                <Route path="/projects" element={<Projects />}></Route>
+                <Route path="/projects" element={<Private><Projects /></Private>}></Route>
                 <Route path="/newproject" element={<Private><NewProject /></Private>}></Route>
                 <Route path="/company" element={<Company />}></Route>
-                <Route path="/login" element={<Login />}></Route>
+                <Route path="/login" element={<Logged><Login /></Logged>}></Route>
+                <Route path="/registerEmail" element={<Logged><Cadastro_email/></Logged>}></Route>
+                <Route path="/register/:key" element={<Logged><Cadastro_form/></Logged>}></Route>
               </Routes>
             </Container>
           <Footer/>

@@ -20,7 +20,7 @@
     background-color: #222222;
     width: 100%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    max-width: 300px;
+    max-width: 305px;
     padding: 1.5rem;
     border-radius: 5px;
 }
@@ -46,9 +46,22 @@
     outline: invert;
 }
 
+input:disabled {
+    color: rgb(0, 0, 0);
+    background-color: #3b3b3b;
+}
+
 .login .actions {
     text-align: center;
     margin-top: 1rem;
+}
+
+.login .actions p{
+    text-align: center;
+    margin-top: 1rem;
+    color: #b31717;
+    font-size: .9em;
+    letter-spacing: .5px;
 }
 
 .login .actions button {

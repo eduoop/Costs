@@ -9,10 +9,20 @@
 
 .login h1 {
     color: white;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
     font-size: 1.6em;
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     border-left: 2px solid rgb(255, 255, 255);
+    padding: 0em .2em;
+}
+
+.login p {
+    color: rgb(177, 177, 177);
+    margin-bottom: .7em;
+    font-size: .9em;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
     padding: 0em .2em;
 }
 
@@ -20,7 +30,7 @@
     background-color: #222222;
     width: 100%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    max-width: 300px;
+    max-width: 310px;
     padding: 1.5rem;
     border-radius: 5px;
 }
@@ -39,7 +49,7 @@
 }
 
 .space {
-    margin-bottom: 1.4em;
+    margin-bottom: 1em;
 }
 
 .login .field input:focus {
@@ -63,12 +73,7 @@
     cursor: pointer;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border: none;
-    margin-top: .5em;
-}
-
-.incorrect_user p {
-    color: #FF5252;
-    text-align: center;
+    margin-top: .2em;
 }
 
 .login .actions button:hover {
