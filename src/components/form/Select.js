@@ -4,7 +4,7 @@ function Select ({ text, name, options, handleOnChange, value }) {
     return (
         <div className={styles.form_control}>
             <label htmlFor={name}>{text}:</label>
-            <select>
+            <select onChange={handleOnChange} value={value || ''}>
                 <option>Selecione uma categoria</option>
                 { options.map((category) => (
                     <option key={category.id}>{category.name}</option>
