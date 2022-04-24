@@ -8,10 +8,6 @@ export const createSession = async (email, password) => {
     return api.post('/auth', { email, password })
     .catch(function (error) {
         if (error.response) {
-          if(error.response.status === 422) {
-              alert('preencha todos os campos')
-          }
-
           if(error.response.status === 400) {
               alert('Email e/ou senha incorretos')
           }

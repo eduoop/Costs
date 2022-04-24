@@ -13,6 +13,8 @@ import Projects from '../src/components/pages/Projects';
 import Login from './components/pages/Login';
 import Cadastro_email from './components/pages/Cadastro_email';
 import Cadastro_form from './components/pages/Cadastro_form';
+import ForgotPassword from './components/pages/ForgotPassworld';
+import UpdatePassword from './components/pages/UpdatePassword';
 
 import { AuthProvider, AuthContext } from "./components/contexts/Auth"
 
@@ -61,6 +63,8 @@ function App() {
                 <Route path="/login" element={<Logged><Login /></Logged>}></Route>
                 <Route path="/registerEmail" element={<Logged><Cadastro_email/></Logged>}></Route>
                 <Route path="/register/:key" element={<Logged><Cadastro_form/></Logged>}></Route>
+                <Route path="/forgot-password" element={<Logged><ForgotPassword/></Logged>}></Route>
+                <Route path="/update-password/:key" element={<Logged><UpdatePassword/></Logged>}></Route>
               </Routes>
             </Container>
           <Footer/>

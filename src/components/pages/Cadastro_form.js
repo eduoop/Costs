@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import styles from './Cadastro_form.module.css'
 import { Link, useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
+import Message from "../layouts/Message"
+import Loader from "../layouts/Loader"
 
 function Cadastro_form() {
 
@@ -20,23 +22,41 @@ function Cadastro_form() {
         })
     }, [key])
 
+    const [removeLoading, setRemoveLoading] = useState(false)
 
     const [name, setName] = useState()
     const [password, setPassword] = useState()
     const [passwordConfirmation, setPasswordConfirmation] = useState()
     const [email, setEmail] = useState()
 
+    const [nullCamps, setNullCamps] = useState(false)
+    const [passwordsIncorect, setPasswordsIncorect] = useState(false)
+    const [shortPassword, setShortPassword] = useState(false)
+
     // var incorrectPassword = false
 
     const hendleSubmit = (e) => {
         e.preventDefault();
-
+        setRemoveLoading(true)
         if (password !== passwordConfirmation) {
-            // incorrectPassword = true
-            // console.log(incorrectPassword)
+            setPasswordsIncorect(true)
+            setRemoveLoading(false)
 
-            alert('Senhas não coincidem')
-        } else {
+            if(setPasswordConfirmation) {
+                setTimeout(() => {
+                    setPasswordsIncorect(false)
+                }, 3000)
+            }
+
+            // alert('Senhas não coincidem')
+        }
+        else if(password < 6 || passwordConfirmation < 6) {
+            setShortPassword(false)
+            setTimeout(() => {
+                setShortPassword(false)
+            }, 3000)
+        }        
+        else {
             axios.put("http://127.0.0.1:3333/users/register", { 
             key: key,
             name: name,
@@ -44,13 +64,20 @@ function Cadastro_form() {
             passwordConfirmation: passwordConfirmation
          })
          .then(response => {
-            alert('Sua conta no Costs foi criada com sucesso')
-            navigate("/login")
+             setRemoveLoading(true)
+            navigate('/login', { state: {message: 'A sua conta foi criada com sucesso!'} })
          })
          .catch(function (error) {
+            setRemoveLoading(false)
             if (error.response) {
               if(error.response.status === 422) {
-                  alert('preencha todos os campos')
+                //   alert('preencha todos os campos')
+                  setNullCamps(true)
+                  if(setNullCamps) {
+                    setTimeout(() => {
+                        setNullCamps(false)
+                    }, 3000)
+                }
               }
     
               if(error.response.status === 400) {
@@ -66,7 +93,10 @@ function Cadastro_form() {
         <>
           <div className={styles.login}>
               <form className={styles.form} onSubmit={hendleSubmit}>
-                <h1 className={styles.title}>Estamos quase prontos...</h1>
+              <h1 className={styles.title}>Estamos quase prontos...</h1>
+                { passwordsIncorect && <Message msg='As senhas estão diferentes' type="error"/> }
+                { nullCamps && <Message msg='Preencha todos os campos' type="error"/> }
+                { shortPassword && <Message msg='A senha deve ter no minimo 6 caracters' type="error"/> }
                   <div className={styles.field}>
                       <input 
                        placeholder={email}
@@ -110,7 +140,7 @@ function Cadastro_form() {
 
                   {/* { incorrectPassword ? <div className={styles.actions}>
                      <p>Ops, as senhas estão diferentes!</p>
-                  </div> : ''} */}
+                    </div> : ''} */}
 
                   <div className={styles.actions}>
                       <button type="submit">Criar</button>
@@ -121,6 +151,7 @@ function Cadastro_form() {
                   </div>
 
               </form>
+                    { removeLoading && <Loader/> }
           </div>
         </>
     )
