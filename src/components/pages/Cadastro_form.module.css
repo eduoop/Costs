@@ -7,6 +7,12 @@
     padding: 4em;
 }
 
+@media only screen and (max-width: 768px) {
+    .login .form {
+        margin-right: 65%;
+    }
+}
+
 .login h1 {
     color: white;
     margin-bottom: 1.5em;

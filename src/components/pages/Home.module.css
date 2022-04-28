@@ -7,6 +7,12 @@
     padding: 4em;
 }
 
+@media only screen and (max-width: 768px) {
+    .home_container {
+        margin-right: 60%;
+    }
+}
+
 .home_container h1 {
     font-size: 2.5em;
     margin-bottom: .5em;

@@ -5,12 +5,18 @@
     padding: 1em;
 }
 
+
 .list {
     display: flex;
     list-style-type: none;
     align-items: center;
 }
 
+@media only screen and (max-width: 768px) {
+    .list {
+        margin-left: 11px;
+    }
+}
 .list a {
     color: white;
     text-decoration: none;

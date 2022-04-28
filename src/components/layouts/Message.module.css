@@ -9,6 +9,13 @@
     transition: .5s;
 }
 
+@media only screen and (max-width: 768px) {
+    .message {
+        width: auto;
+        margin-right: 65%;
+    }
+}
+
 .success {
     color: #155724;
     background: #d4edda;

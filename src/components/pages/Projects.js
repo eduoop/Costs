@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { getProjects } from "../../services/api"
 import Message from "../layouts/Message"
 import { useLocation } from "react-router-dom"
-import style from './Project.module.css'
+import style from './Projects.module.css'
 import LinkButton from "../layouts/LinkButton"
 import Container from "../layouts/Container"
 import ProjectCard from "../project/ProjectCard"
@@ -34,6 +34,8 @@ function Projects() {
   }, [])
 
   function removeProject(id) {
+    setProjectMessage('')
+    setProjectMessageError('')
     setRemoveLoading(false)
     const token = localStorage.getItem('token')
 
@@ -74,6 +76,7 @@ function Projects() {
               id={project.id}
               name={project.name} 
               budget={project.budget}
+              services={project.servicesCount}
               category={project.category}
               key={project.id}
               handleRemove={removeProject}

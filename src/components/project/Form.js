@@ -32,7 +32,7 @@ function Form ({ btnText, handleSubmit, projectData }) {
         category: e.target.options[e.target.selectedIndex].text, 
         categoryId: e.target.value
     })
-}
+    }
 
    const submit = (e) => {
        e.preventDefault();

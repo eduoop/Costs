@@ -2,7 +2,7 @@ import style from './ProjectCard.module.css'
 import {BsPencil, BsFillTrashFill} from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-const ProjectCard = ({id, name, budget, category, handleRemove}) => {
+const ProjectCard = ({id, name, budget, category, services, handleRemove}) => {
 
 
     const remove = (e) => {
@@ -17,12 +17,15 @@ const ProjectCard = ({id, name, budget, category, handleRemove}) => {
             <p>
                 <span>Orçamento: R${budget}</span>
             </p>
+            <p>
+                <span>Serviços: {services}</span>
+            </p>
             <p className={style.category_text}>
                 <span className={`${style[category.toLowerCase()]}`}></span> {category}
             </p>
 
             <div className={style.project_card_actions}>
-                <Link to="/" className={style.project_card_actions_link}>
+                <Link to={`/project/${id}`} className={style.project_card_actions_link}>
                     <BsPencil/> Editar
                 </Link>
                 <button onClick={remove}>

@@ -35,6 +35,12 @@
     border-radius: 5px;
 }
 
+@media only screen and (max-width: 768px) {
+    .login .form {
+        margin-right: 65%;
+    }
+}
+
 .login .field input {
     width: 100%;
     border: none;

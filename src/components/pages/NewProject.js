@@ -9,20 +9,25 @@ import Loader from "../layouts/Loader"
 
 function NewProject() {
 
-  const [hasError, setHasError] = useState()
+  const [hasError, setHasError] = useState('')
 
   const [removeLoading, setRemoveLoading] = useState(true)
 
   const navigate = useNavigate()
 
   function createPost(project) {
-
+    setHasError('')
     setRemoveLoading(false)
 
     const token = localStorage.getItem('token')
 
     // initalize const and services
-    axios.post("http://127.0.0.1:3333/projects", project, {
+    axios.post("http://127.0.0.1:3333/projects",{
+      name: project.name,
+      budget: project.budget,
+      category: project.category,
+      cost: 0
+    }, {
       headers: {
         'Authorization': `bearer ${token}`
       }
@@ -35,9 +40,6 @@ function NewProject() {
     .catch(err => {
       setRemoveLoading(true)
       setHasError(true)
-      setTimeout(() => {
-        setHasError(false)
-      }, 3000)
     })
 
   }

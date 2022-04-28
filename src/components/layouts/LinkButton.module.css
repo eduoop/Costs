@@ -10,6 +10,12 @@
     font-weight: 500;
 }
 
+@media only screen and (max-width: 768px) {
+    .btn {
+        width: auto;
+    }
+}
+
 .btn:hover {
     color: #FFBB33;
 }

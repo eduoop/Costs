@@ -25,7 +25,7 @@ function Navbar() {
         <>
             <nav className={styles.navbar}>
                <Container>
-                <Link to="/"> <img src={Logo} alt='costs'/> </Link>
+                <Link className={styles.logo} to="/"> <img src={Logo} alt='costs'/> </Link>
                 <ul className={styles.list}>
                     <li className={styles.item}><Link to="/">Home</Link></li>
                     <li className={styles.item}><Link to="/projects">Projetos</Link></li>
