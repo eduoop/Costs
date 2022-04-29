@@ -44,7 +44,6 @@ const Login = () => {
     return (
         <>
           <div className={styles.login}>
-              <p>{String(authenticated)}</p>
               <form className={styles.form} onSubmit={hendleSubmit}>
                 <h1 className={styles.title}>Bem vindo de <span>volta</span></h1>
                 { message &&  <Message msg="sua conta foi criada com sucesso!" type="success"/>}
